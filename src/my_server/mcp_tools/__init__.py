@@ -18,8 +18,9 @@ verifier = StaticTokenVerifier(
 )
 
 @smithery.server(config_schema=ConfigSchema) 
-def create_server(): 
+def create_server(transport): 
     mcp = FastMCP(name="Development Server")
+    mcp.run(transport="sse")
 
 DB_FILE = "database.db"
 
