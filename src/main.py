@@ -1,5 +1,5 @@
 
-from src.my_server.mcp_tools import mcp
+from my_server.mcp_tools import mcp
 
 
 def run_mcp():

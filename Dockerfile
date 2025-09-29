@@ -15,4 +15,4 @@ COPY pyproject.toml .
 COPY src/ .
 
 # Start the server
-CMD ["uv", "run", "python", "main.py"]
+CMD ["uv", "run", "python", "src/main.py"]
