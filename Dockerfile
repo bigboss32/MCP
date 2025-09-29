@@ -2,17 +2,18 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install uv
+# Instalar uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
-# Copy project config
-COPY pyproject.toml .
+# Copiar todo el proyecto (no solo pyproject.toml)
+COPY pyproject.toml uv.lock README.md ./ 
+COPY src/ ./src
 
-# Install dependencies
+# Instalar dependencias (ahora uv encuentra src/my_server)
+RUN uv sync --frozen
 
+# Archivos adicionales (opcional, si quieres base de datos o .env)
+COPY database.db .env ./
 
-# Copy source code
-COPY src/ .
-
-# Start the server
-CMD ["uv", "run", "python", "src/main.py"]
+# Comando por defecto
+CMD ["uv", "run", "python", "-m", "src.main"]
