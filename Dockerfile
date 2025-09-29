@@ -17,4 +17,5 @@ COPY . .
 EXPOSE 8080
 
 # Comando por defecto para arrancar el MCP
-CMD ["python", "server.py"]
+CMD ["python", "src/my_server/main.py"]
+
