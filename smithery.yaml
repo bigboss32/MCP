@@ -1,4 +1,1 @@
-version: 1
-start:
-  command: ["python", "server.py"]
-  port: 8000
+runtime: "python"

@@ -17,7 +17,9 @@ verifier = StaticTokenVerifier(
     required_scopes=["read:data"]
 )
 
-mcp = FastMCP(name="Development Server")
+@smithery.server(config_schema=ConfigSchema) 
+def create_server(): 
+    mcp = FastMCP(name="Development Server")
 
 DB_FILE = "database.db"
 
