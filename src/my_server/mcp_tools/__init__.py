@@ -17,10 +17,10 @@ verifier = StaticTokenVerifier(
     required_scopes=["read:data"]
 )
 
-@smithery.server(config_schema=ConfigSchema) 
+
 def create_server(transport): 
     mcp = FastMCP(name="Development Server")
-    mcp.run(transport="sse")
+    mcp.run(transport=transport)
 
 DB_FILE = "database.db"
 

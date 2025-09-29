@@ -1,21 +1,18 @@
-# Imagen base con Python 3.11
 FROM python:3.11-slim
 
-# Establecer directorio de trabajo
 WORKDIR /app
 
-# Copiar requirements
-COPY requirements.txt .
+# Install uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
-# Instalar dependencias
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy project config
+COPY pyproject.toml .
 
-# Copiar todo el proyecto
-COPY . .
+# Install dependencies
+RUN uv sync --frozen
 
-# Exponer el puerto del MCP
-EXPOSE 8080
+# Copy source code
+COPY src/ .
 
-# Comando por defecto para arrancar el MCP
-CMD ["python", "src/my_server/main.py"]
-
+# Start the server
+CMD ["uv", "run", "python", "main.py"]
