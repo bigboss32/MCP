@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  restaurante-mcp:
+    build: .
+    container_name: restaurante-mcp
+    ports:
+      - "8080:8080"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}  # Se toma de tu archivo .env o del sistema
+    volumes:
+      - .:/app/management     # Persistencia de base de datos y CSV
+    tty: true
