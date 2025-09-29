@@ -17,10 +17,7 @@ verifier = StaticTokenVerifier(
     required_scopes=["read:data"]
 )
 
-
-def create_server(transport): 
-    mcp = FastMCP(name="Development Server")
-    mcp.run(transport=transport)
+mcp = FastMCP(name="Development Server")
 
 DB_FILE = "database.db"
 

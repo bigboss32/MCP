@@ -11,13 +11,19 @@ requires-python = ">=3.12"
 dependencies = [
     "mcp>=1.15.0",
     "smithery>=0.4.2",
+    "fastmcp",
+    "openai>=1.0.0",
+    "python-dotenv>=1.0.0",
+    "psycopg2-binary>=2.9.10",
+    "uvicorn>=0.22.0",
+    "pandas>=2.0.0"
 ]
 
 [project.scripts]
 dev = "smithery.cli.dev:main"
 playground = "smithery.cli.playground:main"
 
-# Dile dónde buscar paquetes (tu código vive en src/)
+# Dile a setuptools dónde buscar paquetes (tu código está en src/)
 [tool.setuptools.packages.find]
 where = ["src"]
 
