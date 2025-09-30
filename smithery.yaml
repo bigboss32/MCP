@@ -1,15 +1,23 @@
 runtime: "container"
-build:
-  dockerfile: "Dockerfile"           # Path to your Dockerfile
-  dockerBuildPath: "."               # Docker build context
 startCommand:
-  type: "http"
-  configSchema:                      # Optional: JSON Schema for configuration
-    type: "object"
+  type: http
+  configSchema:
+    type: object
     properties:
       apiKey:
-        type: "string"
-        description: "API key for external service"
-    required: ["apiKey"]
-  exampleConfig:                     # Optional: Example configuration
-    apiKey: "your-api-key-here"
+        type: string
+        title: "Weather API Key"
+        description: "API key for weather service"
+      units:
+        type: string
+        title: "Temperature Units"
+        description: "Temperature unit preference"
+        default: "celsius"
+        enum: ["celsius", "fahrenheit", "kelvin"]
+      maxResults:
+        type: integer
+        title: "Max Results"
+        description: "Maximum number of forecast days"
+        default: 5
+        minimum: 1
+        maximum: 14
